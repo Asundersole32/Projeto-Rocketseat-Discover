@@ -100,11 +100,15 @@ body * {
   left: 0;
   transform: translateY(-50%); /*Move o icone 50% acima do topo do conteiner*/
   top: 50%; /*Ajusta o icone para que, relativamente, manipule a posição do icone referente ao topo do conteiner*/
+  animation: slide-back 0.2s;
 }
 
 .light #switch button {
-  right: 0;
-  left: initial;
+  animation: slide-in 0.2s forwards;
+}
+
+#switch button:hover {
+  outline: 8px solid var(--hightligh-color);
 }
 
 #switch span {
@@ -190,6 +194,7 @@ footer {
 
 /*media queries*/
 /*somete funciona se tiver a meta view port*/
+/*@ = at rule*/
 @media (min-width: 700px) {
   :root {
     --bg-url: url(/assets/bg-desktop.jpg);
@@ -197,5 +202,25 @@ footer {
 
   .light {
     --bg-url: url(/assets/bg-desktop-light.jpg);
+  }
+}
+
+/*animation*/
+
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
   }
 }
