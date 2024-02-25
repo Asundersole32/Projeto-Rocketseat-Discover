@@ -13,10 +13,10 @@ function toggleMode() {
   const img = document.querySelector("#profile img")
 
   if (html.classList.contains("light")) {
-    img.setAttribute("src", "/assets/Erik_Avatar_light.png")
+    img.setAttribute("src", "./assets/Erik_Avatar_light.png")
     img.setAttribute("alt", "Dogão Samurai")
   } else {
-    img.setAttribute("src", "/assets/Erik_Avatar.png")
+    img.setAttribute("src", "./assets/Erik_Avatar.png")
     img.setAttribute(
       "alt",
       "Foto de Erik Felipe Sorrindo, vestindo um terno e oculos preto"
