@@ -30,6 +30,7 @@ body {
   background-repeat: no-repeat;
   background-position: top center; /*pode se alterar posições de x e y*/
   background-size: cover; /*caso estaja com a opção contain, ele se adequara as dimensões do body, e não da pagina*/
+  height: 100vh;
 
   /*Posso agrupar todas as informações anteriores em uma só propriedade*/
   /*background: url(/assets/bg-mobile.jpg) no-repeat top center/cover*/
@@ -185,4 +186,16 @@ footer {
   padding: 24px 0;
   text-align: center;
   font-size: 14px;
+}
+
+/*media queries*/
+/*somete funciona se tiver a meta view port*/
+@media (min-width: 700px) {
+  :root {
+    --bg-url: url(/assets/bg-desktop.jpg);
+  }
+
+  .light {
+    --bg-url: url(/assets/bg-desktop-light.jpg);
+  }
 }
