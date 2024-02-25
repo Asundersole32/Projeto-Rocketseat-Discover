@@ -42,7 +42,7 @@ body * {
 }
 
 #container {
-  width: 360px; /*largura*/
+  width: 100%; /*largura*/
 
   /*border: 1px solid red;*/
 
@@ -52,6 +52,7 @@ body * {
   margin-top: 56px; /*também poderia ser um padding top de 56 px*/
 
   padding: 0 24px;
+  max-width: 588px;
 }
 
 /*profile*/
