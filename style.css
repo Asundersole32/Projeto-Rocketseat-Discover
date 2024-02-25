@@ -1,0 +1,226 @@
+* {
+  /*retirando as configurações do navegador*/
+  margin: 0;
+  padding: 0; /*preenchimentos*/
+  box-sizing: border-box; /*Mantem a medida da borda da caixa, adequando qualquer outra configaração de medida conflitante com a medida da borda*/
+}
+
+:root {
+  --text-color: white;
+  --bg-url: url(/assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(255, 255, 255, 0.02);
+  --hightligh-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(/assets/moon-stars.svg);
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(/assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --hightligh-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(/assets/sun.svg);
+}
+
+body {
+  background-image: var(--bg-url);
+  background-repeat: no-repeat;
+  background-position: top center; /*pode se alterar posições de x e y*/
+  background-size: cover; /*caso estaja com a opção contain, ele se adequara as dimensões do body, e não da pagina*/
+  height: 100vh;
+
+  /*Posso agrupar todas as informações anteriores em uma só propriedade*/
+  /*background: url(/assets/bg-mobile.jpg) no-repeat top center/cover*/
+  /*Essa forma é conhecida como atalho(short hand)*/
+}
+
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+
+#container {
+  width: 100%; /*largura*/
+
+  /*border: 1px solid red;*/
+
+  margin: auto; /*aplica a propriedade auto para o top, rigth, bottom e left*/
+  /*dependendo de quantas propriedades o margin receber seu comportamento mudará, sendo possivel ir mudando as propriedades de margin manualmente numa única instancia*/
+
+  margin-top: 56px; /*também poderia ser um padding top de 56 px*/
+
+  padding: 0 24px;
+  max-width: 588px;
+}
+
+/*profile*/
+
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+
+/*elementos inline que são filhos de outro elemento permitem que o elemento pai defina sua possição*/
+
+#profile img {
+  width: 112px;
+}
+
+/*display: block = ira dar ao elemento toda a largura possivel na tela para ele*/
+/*display: inline = coloca os elementos assim caracterizados alinhados um com o outro*/
+/*display: inline-block = ira fazer o elemento permanecer inline, mas com algumas caracteristicas de elemento block*/
+/*em elementos inline, não há como aplicar o margin auto*/
+
+#profile p {
+  font-weight: 500; /*grossura da fonte*/
+  line-height: 24px; /*altura da linha*/
+  margin-top: 8px;
+}
+
+/*switch*/
+
+#switch {
+  position: relative;
+  width: 64px;
+  margin: 4px auto;
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white;
+  border: 0;
+  border-radius: 50%;
+  background: white var(--switch-bg-url) no-repeat center;
+  position: absolute; /*Tem uma posição absoluta na minha pagina, não sendo mais contido pelo conteiner*/
+  z-index: 1; /*Move a posição do icone para uma camada a cima do conteiner*/
+  left: 0;
+  transform: translateY(-50%); /*Move o icone 50% acima do topo do conteiner*/
+  top: 50%; /*Ajusta o icone para que, relativamente, manipule a posição do icone referente ao topo do conteiner*/
+  animation: slide-back 0.2s;
+}
+
+.light #switch button {
+  animation: slide-in 0.2s forwards;
+}
+
+#switch button:hover {
+  outline: 8px solid var(--hightligh-color);
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+/*links*/
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 0;
+}
+
+/*display: flex | se aplicado a lista como todo, ele tenta fazer os itens sem organizarem de forma flexivel entre si*/
+
+ul li a {
+  border: 1px solid var(--stroke-color); /*rgba = red green blue alpha, sendo alpha a opacidade*/
+
+  display: flex;
+  justify-content: center; /*Centraliza o item no meio da caixa*/
+  align-items: center; /*Centraliza no meio da linha*/
+
+  padding: 16px 24px;
+
+  background: var(--surface-color);
+  border-radius: 8px; /*arredondamento de borda*/
+
+  backdrop-filter: blur(4px); /*aplicar um blur no meu elemento*/
+  -webkit-backdrop-filter: blur(4px);
+
+  text-decoration: none; /*definir a linha em baixo do texto como nenhuma*/
+  font-weight: 500;
+
+  transition: background 0.5s; /*quando passar o mouse no link, ele transiciona o background com 0,5s de tempo*/
+}
+
+/*pseudo-seletor*/
+ul li a:hover {
+  background-color: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+/*social-links*/
+
+#social-links {
+  display: flex; /*para habilitar o gap*/
+  padding: 24px 0;
+  font-size: 24px;
+
+  justify-content: center; /*Centraliza o item no meio da caixa*/
+  align-items: center;
+}
+
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+
+  transition: background 0.2s;
+  border-radius: 50%; /*está aqui pq, se estivesse no houver o efeito da transição seria defeituoso*/
+}
+
+#social-links a:hover {
+  background: var(--hightligh-color);
+}
+
+footer {
+  padding: 24px 0;
+  text-align: center;
+  font-size: 14px;
+}
+
+/*media queries*/
+/*somete funciona se tiver a meta view port*/
+/*@ = at rule*/
+@media (min-width: 700px) {
+  :root {
+    --bg-url: url(/assets/bg-desktop.jpg);
+  }
+
+  .light {
+    --bg-url: url(/assets/bg-desktop-light.jpg);
+  }
+}
+
+/*animation*/
+
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
+}
